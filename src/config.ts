@@ -2,7 +2,7 @@ import { IConfig } from "terraria-server";
 
 const CONFIG: IConfig = {
     SERVER_URL:
-        "http://download1079.mediafire.com/79u5gj6wh9xg/2jfe859ntuz75is/server.zip", // TShock 1.4.1.1
+        "http://download1588.mediafire.com/gcbkifyka1yg/cjw3webejoyv9k0/1412.zip", // Terraria server 1.4.1.2
     BUILD_DIRECTORY: "./server",
     FILE_NAME: "server.zip",
     SERVER_CONFIG: {
