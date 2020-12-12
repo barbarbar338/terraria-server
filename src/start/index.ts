@@ -1,17 +1,23 @@
-import { ChildProcess, spawn } from "child_process";
+import { ChildProcess, spawn, execFile } from "child_process";
 import { IConfig } from "terraria-server";
 import { existsSync } from "fs";
 import "colors";
 
 export default function (CONFIG: IConfig): ChildProcess | void {
-    if (existsSync(`${CONFIG.BUILD_DIRECTORY}/TerrariaServer.exe`)) {
+    if (
+        existsSync(`${CONFIG.BUILD_DIRECTORY}/1412/Windows/TerrariaServer.exe`)
+    ) {
         console.info(
             `${"[TerrariaServer]".bgRed.black}: ${"Starting server...".blue}`,
         );
-        return spawn("TerrariaServer.exe", ["-config", "serverconfig.txt"], {
-            stdio: "inherit",
-            cwd: CONFIG.BUILD_DIRECTORY,
-        });
+        return spawn(
+            "1412/Windows/TerrariaServer.exe",
+            ["-config", "serverconfig.txt"],
+            {
+                stdio: "inherit",
+                cwd: CONFIG.BUILD_DIRECTORY,
+            },
+        );
     } else {
         console.info(
             `${"[TerrariaServer]".bgRed.black}: ${
