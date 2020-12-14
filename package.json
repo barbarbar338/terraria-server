@@ -8,7 +8,7 @@
         "build": "npm run server:build",
         "lint": "eslint . --ext .ts",
         "format": "prettier --write .",
-        "start": "npm run server:start",
+        "start": "npm run server:build && npm run server:start",
         "server:build": "ts-node src --build",
         "server:start": "ts-node src --start"
     },
@@ -37,6 +37,17 @@
         "colors": "^1.4.0",
         "command-line-args": "^5.1.1",
         "request": "^2.88.2",
-        "rimraf": "^3.0.2"
+        "rimraf": "^3.0.2",
+        "@types/adm-zip": "^0.4.33",
+        "@types/command-line-args": "^5.0.0",
+        "@types/node": "^14.0.27",
+        "@types/request": "^2.48.5",
+        "@types/rimraf": "^3.0.0",
+        "@typescript-eslint/eslint-plugin": "^3.9.0",
+        "@typescript-eslint/parser": "^3.9.0",
+        "eslint": "^7.7.0",
+        "prettier": "^2.0.5",
+        "ts-node": "^8.10.2",
+        "typescript": "^3.9.7"
     }
 }
