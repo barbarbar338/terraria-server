@@ -7,6 +7,7 @@
     "scripts": {
         "postinstall": "npm run server:build && chmod -R 777 server/",
         "build": "npm run server:build && chmod -R 777 server/",
+        "heroku-cleanup": "npm run server:build && chmod -R 777 server/",
         "lint": "eslint . --ext .ts",
         "format": "prettier --write .",
         "start": "npm run server:build && chmod -R 777 server/ && npm run server:start",
@@ -50,5 +51,8 @@
         "prettier": "^2.0.5",
         "ts-node": "^8.10.2",
         "typescript": "^3.9.7"
+    },
+    "engines": {
+        "node": "15.x"
     }
 }
