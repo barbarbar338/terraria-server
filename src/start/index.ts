@@ -15,7 +15,7 @@ export default function (CONFIG: IConfig): ChildProcess | void {
             ["-config", "serverconfig.txt"],
             {
                 stdio: "inherit",
-                cwd: CONFIG.BUILD_DIRECTORY,
+                //cwd: CONFIG.BUILD_DIRECTORY,
             },
         );
     } else {
