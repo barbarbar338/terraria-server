@@ -10,14 +10,14 @@ export default function (CONFIG: IConfig): Promise<void> {
     return new Promise((res) => {
         const configString = [];
         configString.push(
-            `world=${resolve(CONFIG.SERVER_CONFIG.WORLDS_FOLDER)}\\${
+            `world=${resolve(CONFIG.SERVER_CONFIG.WORLDS_FOLDER)}/${
                 CONFIG.SERVER_CONFIG.WORLD_FILE
             }.wld`,
         );
         configString.push(
             `worldpath=${resolve(CONFIG.SERVER_CONFIG.WORLDS_FOLDER)}`,
         );
-        configString.push(`${CONFIG.SERVER_CONFIG.BAN_LIST}.txt`);
+        configString.push(`banlist=${CONFIG.SERVER_CONFIG.BAN_LIST}.txt`);
         configString.push(`motd=${CONFIG.SERVER_CONFIG.MOTD}`);
         configString.push(`port=${CONFIG.SERVER_CONFIG.PORT}`);
         configString.push(`password=${CONFIG.SERVER_CONFIG.PASSWORD}`);

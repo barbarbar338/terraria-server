@@ -9,8 +9,8 @@ We can't run ".exe" files on sites like [Heroku](http://heroku.com/) or [Glitch]
 
 # 📦 Build and Running
 
--   Run `yarn server:build` or `npm run server:build` to build and configure server files. Make sure you use this command only once. Because every time you use this command, your old server files are deleted. 🏗️
--   Run `yarn server:start` or `npm run server:start` to start server 🎬
+-   Run `yarn build` or `npm run build` to build and configure server files. Make sure you use this command only once. Because every time you use this command, your old server files are deleted. 🏗️
+-   Run `yarn start` or `npm run start` to start server 🎬
 
 # 🔗 Contributing
 

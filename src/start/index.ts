@@ -5,13 +5,13 @@ import "colors";
 
 export default function (CONFIG: IConfig): ChildProcess | void {
     if (
-        existsSync(`${CONFIG.BUILD_DIRECTORY}/1412/Linux/TerrariaServer.exe`)
+        existsSync(`${CONFIG.BUILD_DIRECTORY}/1412/Linux/TerrariaServer.bin.x86_64`)
     ) {
         console.info(
             `${"[TerrariaServer]".bgRed.black}: ${"Starting server...".blue}`,
         );
         return spawn(
-            "1412/Linux/TerrariaServer.exe",
+            "1412/Linux/TerrariaServer.bin.x86_64",
             ["-config", "serverconfig.txt"],
             {
                 stdio: "inherit",
@@ -21,7 +21,7 @@ export default function (CONFIG: IConfig): ChildProcess | void {
     } else {
         console.info(
             `${"[TerrariaServer]".bgRed.black}: ${
-                "TerrariaServer.exe".yellow
+                "TerrariaServer.bin.x86_64".yellow
             } ${"not found. Run".blue} ${"build".yellow} ${"first.".blue}`,
         );
         process.exit(0);
