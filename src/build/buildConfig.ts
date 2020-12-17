@@ -32,7 +32,7 @@ export default function (CONFIG: IConfig): Promise<void> {
         configString.push("secure=1");
         configString.push("upnp=1");
         writeFile(
-            `${CONFIG.BUILD_DIRECTORY}/serverconfig.txt`,
+            `${CONFIG.BUILD_DIRECTORY}/1412/Linux/serverconfig.txt`,
             configString.join("\r\n"),
             () => res(),
         );
