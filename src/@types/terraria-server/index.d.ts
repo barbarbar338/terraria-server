@@ -3,6 +3,7 @@ declare module "terraria-server" {
         BUILD_DIRECTORY: string;
         FILE_NAME: string;
         SERVER_URL: string;
+        PORT: number;
         SERVER_CONFIG: {
             WORLDS_FOLDER: string;
             WORLD_FILE: string;
