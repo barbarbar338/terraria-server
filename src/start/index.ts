@@ -5,13 +5,13 @@ import "colors";
 
 export default function (CONFIG: IConfig): ChildProcess | void {
     if (
-        existsSync(`${CONFIG.BUILD_DIRECTORY}/1412/Windows/TerrariaServer.exe`)
+        existsSync(`${CONFIG.BUILD_DIRECTORY}/1412/Linux/TerrariaServer.exe`)
     ) {
         console.info(
             `${"[TerrariaServer]".bgRed.black}: ${"Starting server...".blue}`,
         );
         return spawn(
-            "1412/Windows/TerrariaServer.exe",
+            "1412/Linux/TerrariaServer.exe",
             ["-config", "serverconfig.txt"],
             {
                 stdio: "inherit",

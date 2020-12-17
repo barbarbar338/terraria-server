@@ -4,7 +4,7 @@ import { IConfig } from "terraria-server";
 import rimraf from "rimraf";
 import "colors";
 
-export default function (CONFIG: IConfig): Promise<void> {
+export default function(CONFIG: IConfig): Promise<void> {
     console.info(
         `${"[TerrariaServer]".bgRed.black}: ${"Building server...".blue}`,
     );
@@ -16,8 +16,7 @@ export default function (CONFIG: IConfig): Promise<void> {
                     buildConfig(CONFIG)
                         .then(() => {
                             console.info(
-                                `${"[TerrariaServer]".bgRed.black}: ${
-                                    "Done!".blue
+                                `${"[TerrariaServer]".bgRed.black}: ${"Done!".blue
                                 }`,
                             );
                             resolve();
