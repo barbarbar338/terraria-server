@@ -5,7 +5,9 @@ import "colors";
 
 export default function (CONFIG: IConfig): ChildProcess | void {
     if (
-        existsSync(`${CONFIG.BUILD_DIRECTORY}/1412/Linux/TerrariaServer.bin.x86_64`)
+        existsSync(
+            `${CONFIG.BUILD_DIRECTORY}/1412/Linux/TerrariaServer.bin.x86_64`,
+        )
     ) {
         console.info(
             `${"[TerrariaServer]".bgRed.black}: ${"Starting server...".blue}`,

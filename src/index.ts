@@ -13,9 +13,11 @@ const args = parser(definitions, {
     partial: true,
 });
 
-if (args.build && !args.start) { // Build and no start
+if (args.build && !args.start) {
+    // Build and no start
     build(CONFIG);
-} else if (!args.build && args.start) {// Start and no build
+} else if (!args.build && args.start) {
+    // Start and no build
     start(CONFIG);
 } else {
     console.info(
