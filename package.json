@@ -2,8 +2,9 @@
     "author": "Barış Demirci",
     "license": "MPL-2.0",
     "name": "terraria-server",
-    "version": "1.0.0",
-    "description": "Run terraria servers on NodeJS",
+    "version": "2.0.0",
+    "description": "Run dedicated game servers on NodeJS",
+    "private": true,
     "scripts": {
         "build": "ts-node src build",
         "lint": "eslint . --ext .ts",
