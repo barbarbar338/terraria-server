@@ -8,7 +8,6 @@ import runNGROK from "./runNGROK";
 
 export default async function (CONFIG: IConfig): Promise<ChildProcess | void> {
     if (existsSync(CONFIG.SERVER_FILE)) {
-        pogger.event("Starting NGROK");
         const host = await runNGROK(CONFIG);
         pogger.success(`NGROK forward started on ${host}`);
         pogger.event("Starting server");
