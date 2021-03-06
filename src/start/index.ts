@@ -1,59 +1,39 @@
-import { ChildProcess, spawn, execFile } from "child_process";
+import { ChildProcess, spawn } from "child_process";
 import { IConfig } from "terraria-server";
 import { existsSync } from "fs";
 import express from "express";
-import "colors";
 import { AddressInfo } from "net";
-import ip from "ip";
+import * as pogger from "pogger";
+import runNGROK from "./runNGROK";
 
-export default function (CONFIG: IConfig): ChildProcess | void {
-    if (
-        existsSync(
-            `${CONFIG.BUILD_DIRECTORY}/1412/Linux/TerrariaServer.bin.x86_64`,
-        )
-    ) {
-        console.info(
-            `${"[TerrariaServer]".bgRed.black}: ${"Starting server...".blue}`,
-        );
-
+export default async function (CONFIG: IConfig): Promise<ChildProcess | void> {
+    if (existsSync(CONFIG.SERVER_FILE)) {
+        const host = await runNGROK(CONFIG);
+        pogger.success(`NGROK forward started on ${host}`);
+        pogger.event("Starting server");
         const app = express();
-
         app.use((_req, res) => {
             res.send(
-                `<h1><span style="color: blue;">Terraria server started on</span> <span style="color: green;">${
-                    ip.address() + ":" + CONFIG.SERVER_CONFIG.PORT
-                }</span></h1>`,
+                `<h1><span style="color: blue;">Terraria server started on </span> <span style="color: green;">${host}</span></h1>`,
             ).end();
         });
-
         const listener = app.listen(CONFIG.PORT, "0.0.0.0", () => {
-            console.info(
-                `${"[TerrariaServer]".bgRed.black}: ${
-                    "Express server started on".blue
-                } ${
-                    (
-                        ip.address() +
-                        ":" +
-                        (listener.address() as AddressInfo).port.toString()
-                    ).green
-                }`,
+            pogger.success(
+                `Express server started on port ${(listener.address() as AddressInfo).port.toString()}`,
             );
         });
-
-        return spawn(
-            "1412/Linux/TerrariaServer.bin.x86_64",
-            ["-config", "serverconfig.txt"],
+        const serverProcess = spawn(
+            CONFIG.SERVER_FILE,
+            ["-config", `${CONFIG.SERVER_FOLDER}/serverconfig.txt`],
             {
                 stdio: "inherit",
-                cwd: CONFIG.BUILD_DIRECTORY,
+                cwd: process.cwd(),
             },
         );
+        return serverProcess;
     } else {
-        console.info(
-            `${"[TerrariaServer]".bgRed.black}: ${
-                "TerrariaServer.bin.x86_64".yellow
-            } ${"not found. Run".blue} ${"build".yellow} ${"first.".blue}`,
-        );
+        pogger.error(`${CONFIG.SERVER_FILE} not found.`);
+        pogger.info("Run 'yarn build' or 'npm run build' command first");
         process.exit(0);
     }
 }

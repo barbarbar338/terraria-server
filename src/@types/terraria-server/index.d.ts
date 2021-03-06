@@ -4,6 +4,9 @@ declare module "terraria-server" {
         FILE_NAME: string;
         SERVER_URL: string;
         PORT: number;
+        SERVER_FOLDER: string;
+        SERVER_FILE: string;
+        NGROK_TOKEN: string;
         SERVER_CONFIG: {
             WORLDS_FOLDER: string;
             WORLD_FILE: string;

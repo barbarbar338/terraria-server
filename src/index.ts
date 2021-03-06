@@ -1,28 +1,34 @@
 import build from "./build";
 import start from "./start";
-import parser from "command-line-args";
 import CONFIG from "./config";
-import "colors";
+import daph from "daph";
 
-const definitions = [
-    { name: "build", alias: "b", type: Boolean },
-    { name: "start", alias: "s", type: Boolean },
-];
-
-const args = parser(definitions, {
-    partial: true,
-});
-
-if (args.build && !args.start) {
-    // Build and no start
-    build(CONFIG);
-} else if (!args.build && args.start) {
-    // Start and no build
-    start(CONFIG);
-} else {
-    console.info(
-        `${"[TerrariaServer]".bgRed.black}: ${"Available options".green} -> ${
-            "--build, --start".yellow
-        }`,
-    );
-}
+daph.createCommand(
+    {
+        name: "build",
+        usage: "",
+        example: [""],
+        description: "Builds server files",
+        category: "Server",
+        aliases: ["b", "generate", "g"],
+        argDefinitions: [],
+    },
+    () => {
+        build(CONFIG);
+    },
+)
+    .createCommand(
+        {
+            name: "start",
+            usage: "",
+            example: [""],
+            description: "Starts server",
+            category: "Server",
+            aliases: ["s", "bootstrap", "b"],
+            argDefinitions: [],
+        },
+        () => {
+            start(CONFIG);
+        },
+    )
+    .help();

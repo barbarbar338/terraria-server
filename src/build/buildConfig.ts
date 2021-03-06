@@ -1,12 +1,10 @@
 import { resolve } from "path";
 import { writeFile } from "fs";
 import { IConfig } from "terraria-server";
-import "colors";
+import * as pogger from "pogger";
 
 export default function (CONFIG: IConfig): Promise<void> {
-    console.info(
-        `${"[TerrariaServer]".bgRed.black}: ${"Building config file.".blue}`,
-    );
+    pogger.event("Building config file");
     return new Promise((res) => {
         const configString = [];
         configString.push(
@@ -32,7 +30,7 @@ export default function (CONFIG: IConfig): Promise<void> {
         configString.push("secure=1");
         configString.push("upnp=1");
         writeFile(
-            `${CONFIG.BUILD_DIRECTORY}/1412/Linux/serverconfig.txt`,
+            `${CONFIG.SERVER_FOLDER}/serverconfig.txt`,
             configString.join("\r\n"),
             () => res(),
         );
