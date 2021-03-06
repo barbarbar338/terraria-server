@@ -12,18 +12,18 @@ if (!supportedPlatforms.includes(platform)) {
     process.exit(1);
 }
 
-const BUILD_DIRECTORY = "./server";
+const BUILD_DIRECTORY = `${process.cwd()}\\server`;
 
-let SERVER_FOLDER = `${BUILD_DIRECTORY}/1412/Linux`;
-let SERVER_FILE = `${BUILD_DIRECTORY}/1412/Linux/TerrariaServer.bin.x86_64`;
+let SERVER_FOLDER = `${BUILD_DIRECTORY}\\1412\\Linux`;
+let SERVER_FILE = `${BUILD_DIRECTORY}\\1412\\Linux\\TerrariaServer.bin.x86_64`;
 switch (platform) {
     case "linux":
-        SERVER_FOLDER = `${BUILD_DIRECTORY}/1412/Linux`;
-        SERVER_FILE = `${BUILD_DIRECTORY}/1412/Linux/TerrariaServer.bin.x86_64`;
+        SERVER_FOLDER = `${BUILD_DIRECTORY}\\1412\\Linux`;
+        SERVER_FILE = `${BUILD_DIRECTORY}\\1412\\Linux\\TerrariaServer.bin.x86_64`;
         break;
     case "win32":
-        SERVER_FOLDER = `${BUILD_DIRECTORY}/1412/Windows`;
-        SERVER_FILE = `${BUILD_DIRECTORY}/1412/Windows/TerrariaServer.exe`;
+        SERVER_FOLDER = `${BUILD_DIRECTORY}\\1412\\Windows`;
+        SERVER_FILE = `${BUILD_DIRECTORY}\\1412\\Windows\\TerrariaServer.exe`;
         break;
 }
 
@@ -37,12 +37,12 @@ const CONFIG: IConfig = {
     PORT: parseInt(process.env.PORT as string) || 3000,
     NGROK_TOKEN: process.env.NGROK_TOKEN as string,
     SERVER_CONFIG: {
-        WORLDS_FOLDER: "./server/worlds",
+        WORLDS_FOLDER: `${BUILD_DIRECTORY}\\worlds`,
         WORLD_FILE: "MyWorld",
         BAN_LIST: "banlist",
         MOTD: "Welcome to Terraria!",
         PORT: 7777,
-        PASSWORD: "p@55w0rd",
+        PASSWORD: "password",
         MAX_PLAYERS: 2,
         LANGUAGE: "en-US",
         DIFFICULTY: 0,

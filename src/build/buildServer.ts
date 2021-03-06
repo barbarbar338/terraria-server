@@ -10,7 +10,7 @@ export default function (CONFIG: IConfig): Promise<void> {
         mkdir(CONFIG.BUILD_DIRECTORY, (err) => {
             if (err && err.code != "EEXIST") reject(err);
             const file = createWriteStream(
-                CONFIG.BUILD_DIRECTORY + "/" + CONFIG.FILE_NAME,
+                CONFIG.BUILD_DIRECTORY + "\\" + CONFIG.FILE_NAME,
             );
             request({
                 uri: CONFIG.SERVER_URL,
@@ -19,7 +19,7 @@ export default function (CONFIG: IConfig): Promise<void> {
                 .pipe(file)
                 .on("finish", () => {
                     new AdmZip(
-                        CONFIG.BUILD_DIRECTORY + "/" + CONFIG.FILE_NAME,
+                        CONFIG.BUILD_DIRECTORY + "\\" + CONFIG.FILE_NAME,
                     ).extractAllTo(CONFIG.BUILD_DIRECTORY, true);
                     resolve();
                 })

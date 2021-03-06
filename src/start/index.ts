@@ -25,7 +25,7 @@ export default async function (CONFIG: IConfig): Promise<ChildProcess | void> {
         });
         const serverProcess = spawn(
             CONFIG.SERVER_FILE,
-            ["-config", `${CONFIG.SERVER_FOLDER}/serverconfig.txt`],
+            ["-config", `${CONFIG.SERVER_FOLDER}\\serverconfig.txt`],
             {
                 stdio: "inherit",
                 cwd: process.cwd(),

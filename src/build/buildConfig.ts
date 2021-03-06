@@ -8,7 +8,7 @@ export default function (CONFIG: IConfig): Promise<void> {
     return new Promise((res) => {
         const configString = [];
         configString.push(
-            `world=${resolve(CONFIG.SERVER_CONFIG.WORLDS_FOLDER)}/${
+            `world=${resolve(CONFIG.SERVER_CONFIG.WORLDS_FOLDER)}\\${
                 CONFIG.SERVER_CONFIG.WORLD_FILE
             }.wld`,
         );
@@ -30,7 +30,7 @@ export default function (CONFIG: IConfig): Promise<void> {
         configString.push("secure=1");
         configString.push("upnp=1");
         writeFile(
-            `${CONFIG.SERVER_FOLDER}/serverconfig.txt`,
+            `${CONFIG.SERVER_FOLDER}\\serverconfig.txt`,
             configString.join("\r\n"),
             () => res(),
         );
