@@ -2,12 +2,10 @@ import buildServer from "./buildServer";
 import buildConfig from "./buildConfig";
 import { IConfig } from "terraria-server";
 import rimraf from "rimraf";
-import "colors";
+import * as pogger from "pogger";
 
 export default function (CONFIG: IConfig): Promise<void> {
-    console.info(
-        `${"[TerrariaServer]".bgRed.black}: ${"Building server...".blue}`,
-    );
+    pogger.info("Building server...");
     return new Promise((resolve, reject) => {
         rimraf(CONFIG.BUILD_DIRECTORY, (err) => {
             if (err) reject(err);
@@ -15,11 +13,7 @@ export default function (CONFIG: IConfig): Promise<void> {
                 .then(() => {
                     buildConfig(CONFIG)
                         .then(() => {
-                            console.info(
-                                `${"[TerrariaServer]".bgRed.black}: ${
-                                    "Done!".blue
-                                }`,
-                            );
+                            pogger.success("Building done!");
                             resolve();
                         })
                         .catch(reject);

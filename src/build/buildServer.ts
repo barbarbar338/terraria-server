@@ -2,12 +2,10 @@ import request from "request";
 import AdmZip from "adm-zip";
 import { mkdir, createWriteStream } from "fs";
 import { IConfig } from "terraria-server";
-import "colors";
+import * as pogger from "pogger";
 
 export default function (CONFIG: IConfig): Promise<void> {
-    console.info(
-        `${"[TerrariaServer]".bgRed.black}: ${"Building server files.".blue}`,
-    );
+    pogger.event("Building server files");
     return new Promise((resolve, reject) => {
         mkdir(CONFIG.BUILD_DIRECTORY, (err) => {
             if (err && err.code != "EEXIST") reject(err);
