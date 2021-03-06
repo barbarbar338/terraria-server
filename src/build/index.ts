@@ -4,7 +4,7 @@ import { IConfig } from "terraria-server";
 import rimraf from "rimraf";
 import * as pogger from "pogger";
 import * as os from "os";
-import { execSync } from "node:child_process";
+import { execSync } from "child_process";
 
 export default function (CONFIG: IConfig): Promise<void> {
     pogger.info("Building server...");
