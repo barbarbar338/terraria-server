@@ -1,4 +1,6 @@
-# ✨ Terraria Dedicated Server On NodeJS
+# ✨ (DEPRECATED) Terraria Dedicated Server On NodeJS
+
+> (DEPRECATED) The purpose of this project was to run a game server on platforms like Heroku, but I did not think about the system features of these platforms. The project is currently running smoothly on a device that meets the minimum system requirements, but Heroku does not meet these requirements. You can still run the project on a powerful NodeJS hosting without any problem. However, as this is out of our purpose, I stop developing the project. ~barbarbar338
 
 -   Run Terraria servers (or any other game servers) on NodeJS ⚽
 -   Get your [NGROK](https://ngrok.com/) key 🔑
